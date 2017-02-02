@@ -1,0 +1,11 @@
+{
+  "name": "sass-manifest-webpack-plugin",
+  "version": "0.0.1",
+  "description": "A Webpack Plugin to generate Sass Root File Trees",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
