@@ -25,7 +25,7 @@ function parseModule(module, level) {
     }
     if (isSassOrCss(module.rawRequest) && !alreadyInForest(module.rawRequest)) {
         if (path.basename(module.rawRequest) !== 'variables.scss') {
-            assetForest.push(module.rawRequest);
+            assetForest.push(path.relative(process.cwd() + '/src', module.userRequest));
         }
     }
     return
