@@ -38,9 +38,32 @@ SassManifest.prototype.apply = function(compiler) {
             parseModule(m, 0);
         });
 
-        fs.writeFileSync(this.options.filename || './sass-manifest.json', JSON.stringify(assetForest));
+        var filename = this.options.filename || './sass-manifest.json';
+        fs.readFile('/tmp/sass_manifest', 'utf8', function(err, data) {
+            if (err && err.code !== 'ENOENT') {
+                throw err;
+            }
 
-        callback();
+            if (err && err.code === 'ENOENT') {
+                data = '';
+            } else {
+                fs.unlink('/tmp/sass_manifest', function() {
+                    console.log("Temporary Sass Manifest deleted")
+                });
+            }
+
+            data = data.split('\n').concat(assetForest);
+
+            data = data.filter(function(v, i, self) {
+                return v && self.indexOf(v) === i
+            });
+
+            console.log(data);
+
+            fs.writeFile(filename, JSON.stringify(data));
+
+            callback();
+        })
     })
 }
 
