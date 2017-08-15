@@ -56,9 +56,7 @@ SassManifest.prototype.apply = function(compiler) {
 
             data = data.filter(function(v, i, self) {
                 return v && self.indexOf(v) === i
-            });
-
-            console.log(data);
+            })
 
             fs.writeFile(filename, JSON.stringify(data));
 
