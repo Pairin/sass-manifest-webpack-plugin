@@ -59,7 +59,7 @@ SassManifest.prototype.apply = function(compiler) {
             })
 
             fs.writeFile(filename, JSON.stringify(data), function() {
-              console.log(this.options.filename || 'sass-manifest.json' + ' Written!');  
+              console.log(filename);  
             });
 
             callback();
