@@ -32,7 +32,7 @@ function parseModule(module, level) {
 }
 
 SassManifest.prototype.apply = function(compiler) {
-    compiler.plugin('emit', function(compilation, callback) {
+    compiler.plugin('after-emit', function(compilation, callback) {
         assetForest = [];
         compilation.modules.forEach(function(m) {
             parseModule(m, 0);
